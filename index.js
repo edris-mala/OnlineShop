@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 
+const mainRouter = require('./routes/route');
 const authRouter = require('./routes/admin/auth');
 const productsRouter = require('./routes/admin/products');
 
@@ -11,9 +12,11 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieSession({ keys:[''] }));
 
+app.use(mainRouter);
 app.use(authRouter);
 app.use(productsRouter);
 
-app.listen(8000,()=>{
+
+app.listen(3000,()=>{
     console.log('listening');
 });
