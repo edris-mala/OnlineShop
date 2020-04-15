@@ -68,4 +68,9 @@ router.post('/admin/products/:id/edit',
         res.redirect('/admin/products');
 });
 
+router.post('/admin/products/:id/delete',requireAuth,async (req,res) => {
+    await productsRepository.delete(req.params.id);
+    res.redirect('/admin/products');
+});
+
 module.exports = router;
